@@ -6,6 +6,7 @@ import (
 	"crypto/cipher"
 	"crypto/rand"
 	"encoding/hex"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -17,7 +18,6 @@ import (
 	"github.com/atotto/clipboard"
 
 	"github.com/fatih/color"
-	"golang.org/x/crypto/bcrypt"
 )
 
 // function for the Password Generator
@@ -56,18 +56,18 @@ func CopyToClipboard(text string) error {
 }
 
 // PKCS7Unpad removes PKCS7 padding from the input
-func PKCS7Unpad(data []byte) []byte {
-	padding := int(data[len(data)-1])
-	return data[:len(data)-padding]
-}
-
-// hashed the Password
-func hashPassword(password string) (string, error) {
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	if err != nil {
-		return "", err
+func PKCS7Unpad(data []byte) ([]byte, error) {
+	if len(data) == 0 {
+		return nil, errors.New("empty input")
 	}
-	return string(hashedPassword), nil
+
+	padding := int(data[len(data)-1])
+
+	if padding <= 0 || padding > len(data) {
+		return nil, errors.New("invalid padding value")
+	}
+
+	return data[:len(data)-padding], nil
 }
 
 // Generate the GenerateSymmetricKey
@@ -84,26 +84,33 @@ func encryptPasswords(passwords []string, key []byte) ([]string, error) {
 	var encryptedPasswords []string
 
 	for _, password := range passwords {
+		// Generate a random salt for each password
+		salt := make([]byte, aes.BlockSize)
+		if _, err := rand.Read(salt); err != nil {
+			return nil, err
+		}
+
+		// Combine password and salt
+		passwordWithSalt := append(salt, []byte(password)...)
+
+		// Pad the passwordWithSalt to be a multiple of the block size
+		padSize := aes.BlockSize - (len(passwordWithSalt) % aes.BlockSize)
+		padding := bytes.Repeat([]byte{byte(padSize)}, padSize)
+		passwordWithSalt = append(passwordWithSalt, padding...)
+
 		block, err := aes.NewCipher(key)
 		if err != nil {
 			return nil, err
 		}
 
-		passwordBytes := []byte(password)
-
-		// Pad the password to be a multiple of the block size
-		padSize := aes.BlockSize - len(passwordBytes)%aes.BlockSize
-		padding := bytes.Repeat([]byte{byte(padSize)}, padSize)
-		passwordBytes = append(passwordBytes, padding...)
-
-		ciphertext := make([]byte, aes.BlockSize+len(passwordBytes))
+		ciphertext := make([]byte, aes.BlockSize+len(passwordWithSalt))
 		iv := ciphertext[:aes.BlockSize]
 		if _, err := io.ReadFull(rand.Reader, iv); err != nil {
 			return nil, err
 		}
 
 		mode := cipher.NewCBCEncrypter(block, iv)
-		mode.CryptBlocks(ciphertext[aes.BlockSize:], passwordBytes)
+		mode.CryptBlocks(ciphertext[aes.BlockSize:], passwordWithSalt)
 
 		encryptedPasswords = append(encryptedPasswords, hex.EncodeToString(ciphertext))
 	}
@@ -136,27 +143,20 @@ func decryptPasswords(encryptedPasswords []string, key []byte) ([]string, error)
 		mode := cipher.NewCBCDecrypter(block, iv)
 		mode.CryptBlocks(ciphertext, ciphertext)
 
-		decryptedPasswords = append(decryptedPasswords, string(PKCS7Unpad(ciphertext)))
+		// Separate salt and actual password
+
+		password := ciphertext[aes.BlockSize:]
+
+		// Combine salt and password
+		decryptedPassword, err := PKCS7Unpad(password)
+		if err != nil {
+			return nil, err
+		}
+
+		decryptedPasswords = append(decryptedPasswords, string(decryptedPassword))
 	}
 
 	return decryptedPasswords, nil
-}
-
-// generateSalt generates a random salt
-func generateSalt() ([]byte, error) {
-	salt := make([]byte, 25) // You can adjust the length of the salt as needed
-	_, err := rand.Read(salt)
-	if err != nil {
-		return nil, err
-	}
-	return salt, nil
-}
-
-// combineSaltAndPassword combines a salt with a password
-func combineSaltAndPassword(salt []byte, password string) string {
-	// Combine salt and password and return the result
-	combined := hex.EncodeToString(salt) + password
-	return combined
 }
 
 // message for all sub commands
@@ -224,10 +224,10 @@ func main() {
 	}
 
 	// Color variable
-	green := color.New(color.FgGreen).SprintFunc()
-	red := color.New(color.FgRed).SprintFunc()
-	blue := color.New(color.FgBlue).SprintFunc()
-	yellow := color.New(color.FgYellow).SprintFunc()
+	green := color.New(color.FgGreen).SprintFunc()   // green = Worked Fine
+	red := color.New(color.FgRed).SprintFunc()       // red = Errors
+	blue := color.New(color.FgBlue).SprintFunc()     // blue = special Function
+	yellow := color.New(color.FgYellow).SprintFunc() // yellow = Important Information
 
 	// Variable for the GenPassword
 	lowerCaseLetters := "abcdefghijklmnopqrstuvwxyz"
@@ -326,10 +326,14 @@ func main() {
 
 			// Join the decrypted passwords into a single string
 			decryptedPasswordStr := strings.Join(decryptedPassword, ", ")
-			fmt.Printf("Decrypted Passwords: %s\n", decryptedPasswordStr)
+			fmt.Printf("Decrypted Passwords: %s\n", green(decryptedPasswordStr))
 			os.Exit(0)
-		}
+		} else {
+			fmt.Println(red("Missing encrypted Password or key"))
+			fmt.Println(yellow("Syntax: ENCRYPTED_PASSWORD,KEY"))
+			os.Exit(0)
 
+		}
 	}
 
 	if *length < 1 || *length > 256 {
@@ -346,7 +350,6 @@ func main() {
 		var generatedPasswords []string
 
 		for i := 1; i <= *numbPassword; i++ {
-			fmt.Printf("Password %d\n", i)
 
 			allowedCharacters := ""
 
@@ -370,13 +373,21 @@ func main() {
 			if *exlude_specific != "" {
 
 				allowedCharacters += *exlude_specific
+			} else {
+				fmt.Println(red("Empty or invalid characters"))
+				os.Exit(0)
+
 			}
+
+			fmt.Printf("Password %d\n", i)
 
 			password, err := generatePassword(*length, allowedCharacters, *exlude_specific)
 			if err != nil {
 				fmt.Println(red("Error during password generation:", err))
 				os.Exit(1)
 			}
+
+			fmt.Println("Generated password: ", green(password))
 
 			// define passwords here
 			passwords := []string{password}
@@ -391,19 +402,8 @@ func main() {
 
 				// Join the encrypted passwords into a single string
 				encryptedPasswordStr := strings.Join(encryptedPassword, ", ")
-				//fmt.Printf("Encrypted Passwords: %s\n", encryptedPasswordStr)
+				fmt.Printf("Encrypted Passwords: %s\n", yellow(encryptedPasswordStr))
 
-				salt, err := generateSalt()
-				if err != nil {
-					fmt.Println(red("Error generating salt:", err))
-					return
-				}
-
-				saltcryptpassword := combineSaltAndPassword(salt, encryptedPasswordStr)
-				fmt.Printf("Encrypted Password: %s\n", yellow(saltcryptpassword))
-
-			} else {
-				fmt.Println("Generated password:", green(password))
 			}
 
 			generatedPasswords = append(generatedPasswords, password)
@@ -416,6 +416,7 @@ func main() {
 		if *encrypt_password == true {
 			// Print the symmetric key
 			fmt.Printf("Symmetric Key: %s\n", yellow(hex.EncodeToString(key)))
+			fmt.Println("")
 			fmt.Printf(red("Please save your symmetric key in a secure and accessible location. Without the key, decryption is not possible."))
 		}
 
@@ -468,8 +469,11 @@ func main() {
 				os.Exit(1)
 			}
 
-			fmt.Println(blue("All passwords saved to " + *output + " file."))
+			fmt.Println(blue("All Password(s) saved to " + *output + " file."))
 
+		} else {
+			fmt.Println(red("Path is empty or invalid"))
+			os.Exit(0)
 		}
 
 	} else {
@@ -480,5 +484,7 @@ func main() {
 		// End Timer
 		elapsedTime := time.Since(startTime)
 		fmt.Printf("Execution time: %s\n", elapsedTime)
+
 	}
+
 }
