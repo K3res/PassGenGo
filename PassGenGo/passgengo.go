@@ -224,7 +224,7 @@ func main() {
 
 	fmt.Println(intro)
 
-	for i := 0; i <= 5; i++ {
+	for i := 0; i <= 2; i++ {
 		fmt.Println("")
 	}
 
@@ -436,8 +436,8 @@ func main() {
 		if *encrypt_password == true {
 			// Print the symmetric key
 			fmt.Printf("Symmetric Key: %s\n", yellow(hex.EncodeToString(key)))
-			fmt.Println("")
 			fmt.Printf(red("Please save your symmetric key in a secure and accessible location. Without the key, decryption is not possible."))
+			fmt.Println("")
 		}
 
 		if *decrypt_password != "" {
@@ -494,14 +494,16 @@ func main() {
 		}
 
 	} else {
-		println(red("Number muss be bigger than 0"))
+		fmt.Println(red("Number muss be bigger than 0"))
 	}
 
 	if *exe_time {
 
 		// End Timer
 		elapsedTime := time.Since(startTime)
+		fmt.Println("")
 		fmt.Printf("Execution time: %s\n", elapsedTime)
+		fmt.Println("")
 
 	}
 
