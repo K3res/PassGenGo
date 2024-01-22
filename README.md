@@ -79,11 +79,6 @@ go run passgengo.go  <br/>
 
 
 
-Windows <br/>
-
-Mac OS <br/>
-
-
 ## Disclaimer
 (Dieses Tool war nur ein klieines project für mich um mit der programiersprache GO zu üben. Es ist nicht dafür gedacht die sicherste und schnellste programm zu sein.  )
 
