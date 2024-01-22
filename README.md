@@ -7,14 +7,14 @@ Password generator in GO with some extra options. Based on the similiar Python V
 
 # Table of Content
 - [PassGenGo](#passgengo)
-  * [Advantage from PassGenGo](#advantage-passgengo)
+  * [Benefits of PassGenGo](#benefits-passgengo)
   * [Note](#note)
   * [Usage](#usage)
   * [Examples](#examples)
   * [Installation](#installation)
   * [Disclaimer](#disclaimer)
 
-# Advantage from PassGenGo
+# Benefits of PassGenGo
 
 
 # Note
