@@ -18,13 +18,13 @@ Password generator in GO with some extra options. Based on the similiar Python V
 ## Differences from passgen.py V1.1.1
 -t to show the execuritv time
 -en to encrypt directly the generate password
+-de encrypt-password, key 
+for -o -enxp use the ="" format
 
 
 
 ## Usage
 ```
-
-usage: go run passgengo.go [Options]
 
 Password Options:
   -h, -help                                                       Show this help message
@@ -32,7 +32,8 @@ Password Options:
   -n NUMBER_PASSWORDS, --number-passwords NUMBER_PASSWORDS        Specify the number of passwords to generate. Default is 1.
   -c, --clipboard                                                 Copy the generated password to the clipboard
   -en, --encrypt                                                  Encrypt a password or passwords with AES-256 and the same key
-  -de KEY PASSWORD, --decrypt KEY PASSWORD                        Decrypt a password given the key and the encrypted password.
+  -enxp PASSWORD, --encrypt-ext-pass PASSWORD                     Encrypt a password with AES-256. Only works with one password at a time
+  -de ENCRYPT-PASSWORD, Key, --decrypt ENCRYPT-PASSWORD, Key      Decrypt a password given the key and the encrypted password.
   -o OUTPUT-PATH, --output OUTPUT-PATH                            Save the generated password to a file
 
 Options for Exclusion:
@@ -45,15 +46,35 @@ Options for Exclusion:
 Additional Options:
   -t, --time                                                      Give the Execution time from the Password(s) back.
 
-
 ``` 
 
 ## Examples
+-en 
+
+-enxp
+
+-de
+
+-o
+
+-ex
+
+
 
 ## Installation
+Linux
+Install GO:
+download go_linux_install.sh in a new dictonary
+make it executable chmod +x go_linux_install.sh 
+run the bash ./go_linux_install.sh
+
+Windows
+
+Mac OS
+
 
 ## Disclaimer
-
+(Dieses Tool war nur ein klieines project für mich um mit der programiersprache GO zu üben. Es ist nicht dafür gedacht die sicherste und schnellste programm zu sein.  )
 
 
 
