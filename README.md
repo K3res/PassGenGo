@@ -1,17 +1,17 @@
 # PassGenGo
 Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen
 <div align=center>
-
- _____               _____             _____       
-|  __ \             / ____|           / ____|
-| |__) |_ _ ___ ___| |  __  ___ _ __ | |  __  ___
-|  ___/ _` / __/ __| | |_ |/ _ \ '_ \| | |_ |/ _ \
-| |  | (_| \__ \__ \ |__| |  __/ | | | |__| | (_) |
-|_|   \__,_|___/___/\_____|\___|_| |_|\_____|\___/
-
-
-Author: K3res
-Inspired by https://github.com/B0lg0r0v/PassGen
+                           
+                            _____               _____             _____       
+                           |  __ \             / ____|           / ____|
+                           | |__) |_ _ ___ ___| |  __  ___ _ __ | |  __  ___
+                           |  ___/ _` / __/ __| | |_ |/ _ \ '_ \| | |_ |/ _ \
+                           | |  | (_| \__ \__ \ |__| |  __/ | | | |__| | (_) |
+                           |_|   \__,_|___/___/\_____|\___|_| |_|\_____|\___/
+                           
+                           
+                           Author: K3res
+                           Inspired by https://github.com/B0lg0r0v/PassGen
 
 
 </div>
@@ -84,13 +84,13 @@ Additional Options:
 
 Install GO with Script: <br/>
 
-1. Download go_linux_install.sh in a new dictonary <br/>
-2. Make it executable: `chmod +x go_linux_install.sh `<br/>
-3. Run the bash: `./go_linux_install.sh`<br/>
+1. Download `go_linux_install.sh` in a new dictonary. <br/>
+2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
+3. Run the bash: `./go_linux_install.sh`.<br/>
 
 Instal missing GO packages:
-1. Download the complet passgengo folder in a dictonary<br/>
-2. to install the packages run the GO file:  `go run .\passgengo.go`  <br/>
+1. Download the complet passgengo folder in a dictonary.<br/>
+2. To install the packages run the GO file:  `go run .\passgengo.go`  <br/>
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
