@@ -13,10 +13,10 @@ import (
 	"math/big"
 	"os"
 	"strings"
+	"text/tabwriter"
 	"time"
 
 	"github.com/atotto/clipboard"
-
 	"github.com/fatih/color"
 )
 
@@ -143,8 +143,7 @@ func decryptPasswords(encryptedPasswords []string, key []byte) ([]string, error)
 		mode := cipher.NewCBCDecrypter(block, iv)
 		mode.CryptBlocks(ciphertext, ciphertext)
 
-		// Separate salt and actual password
-
+		// Pick just the password
 		password := ciphertext[aes.BlockSize:]
 
 		// Combine salt and password
@@ -159,41 +158,47 @@ func decryptPasswords(encryptedPasswords []string, key []byte) ([]string, error)
 	return decryptedPasswords, nil
 }
 
-// message for all sub commands
+// message for -help
 func customUsage() {
 
-	fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
-	fmt.Println("\n Password Options::")
-	fmt.Println(" -h -help\t\t Show this help message")
-	fmt.Println("")
-	fmt.Println("  -l --length\t\t Specify the password length. Default is 20.")
-	fmt.Println("")
-	fmt.Println("  -n --number-passwords \tSpecify the number of passwords to generate. Default is 1.")
-	fmt.Println("")
-	fmt.Println("  -c --clipboard \tCopy the generated password to the clipboard")
-	fmt.Println("")
-	fmt.Println("  -en --encrypt \tEncrypt a password or passwords with AES-256 and the same key")
-	fmt.Println("")
-	fmt.Println("  -de --decrypt \tDecrypt a password given the key and the encrypted password.")
-	fmt.Println("")
-	fmt.Println("  -o --output \tSave the generated password to a file")
-	fmt.Println("")
-	fmt.Println("  -ex --exclude-specific \tExclude specific characters from the password")
-	fmt.Println("")
-	fmt.Println("  -exl --exclude-lower \tExclude lowercase letters from the password")
-	fmt.Println("")
-	fmt.Println("  -exs --exclude-special \tExclude special characters from the password.")
-	fmt.Println("")
-	fmt.Println("  -exu --exclude-upper \tExclude uppercase letters from the password.")
-	fmt.Println("")
-	fmt.Println("  -exd --exclude-digits \tExclude digits from the password.")
-	fmt.Println("")
-	fmt.Println("  -t --time \tGive the Execution time from the Password(s) back.")
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', tabwriter.TabIndent)
+
+	fmt.Fprintln(w, "usage: go run passgengo.go [Options]")
+	fmt.Fprintln(w, "")
+
+	fmt.Fprintln(w, "Password Options:")
+	fmt.Fprintln(w, "  -h, -help\t\t\tShow this help message")
+	fmt.Fprintln(w, "  -l LENGTH, --length LENGTH\t\t\tSpecify the password length. Default is 20.")
+	fmt.Fprintln(w, "  -n NUMBER_PASSWORDS, --number-passwords NUMBER_PASSWORDS\t\t\tSpecify the number of passwords to generate. Default is 1.")
+	fmt.Fprintln(w, "  -c, --clipboard\t\t\tCopy the generated password to the clipboard")
+	fmt.Fprintln(w, "  -en, --encrypt\t\t\tEncrypt a password or passwords with AES-256 and the same key")
+	fmt.Fprintln(w, "  -enxp PASSWORD, --encrypt-ext-pass PASSWORD\t\t\tEncrypt a password with AES-256. Only works with one password at a time")
+	fmt.Fprintln(w, "  -de ENCRYPT-PASSWORD, Key, --decrypt ENCRYPT-PASSWORD, Key\t\t\tDecrypt a password given the key and the encrypted password.")
+	fmt.Fprintln(w, "  -o OUTPUT-PATH, --output OUTPUT-PATH\t\t\tSave the generated password to a file")
+
+	// Empty row space
+	fmt.Fprintln(w, "")
+
+	fmt.Fprintln(w, "Options for Exclusion:")
+	fmt.Fprintln(w, "  -ex, EXCLUDE_SPECIFIC, --exclude-specific EXCLUDE_SPECIFIC\t\t\tExclude specific characters from the password")
+	fmt.Fprintln(w, "  -exl, --exclude-lower\t\t\tExclude lowercase letters from the password")
+	fmt.Fprintln(w, "  -exs, --exclude-special\t\t\tExclude special characters from the password.")
+	fmt.Fprintln(w, "  -exu, --exclude-upper\t\t\tExclude uppercase letters from the password.")
+	fmt.Fprintln(w, "  -exd, --exclude-digits\t\t\tExclude digits from the password.")
+
+	// Empty row space
+	fmt.Fprintln(w, "")
+
+	fmt.Fprintln(w, "Additional Options:")
+	fmt.Fprintln(w, "  -t, --time\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGive the Execution time from the Password(s) back.")
+	fmt.Fprintln(w, "")
+
+	w.Flush()
 
 }
 
+// Check if the -help flag is provided
 func handleSubcommands(help_command bool) {
-	// Check if the -help flag is provided
 	if help_command {
 		customUsage()
 		os.Exit(0)
@@ -257,11 +262,11 @@ func main() {
 	clipboard := flag.Bool("clipboard", false, "Copy the generated password to the clipboard. Only works with one password at a time.")
 	flag.BoolVar(clipboard, "c", false, "")
 
-	encrypt_password := flag.Bool("encrypt", false, "Encrypt a password with AES-256. Only works with one password at a time.")
+	encrypt_password := flag.Bool("encrypt", false, "Encrypt a password with AES-256.")
 	flag.BoolVar(encrypt_password, "en", false, "")
 
-	exe_time := flag.Bool("time", false, "Give the Execution time from the Password(s) back.")
-	flag.BoolVar(exe_time, "t", false, "")
+	encrypt_ext_password := flag.String("encrypt-ext-pass", "", "Encrypt a password with AES-256. Only works with one password at a time.")
+	flag.StringVar(encrypt_ext_password, "enxp", "", "")
 
 	// Syntax -de "encryptedPassword,key"
 	decrypt_password := flag.String("decrypt", "", "Decrypt a password given the key and the encrypted password.")
@@ -292,6 +297,9 @@ func main() {
 
 	exclude_digits := flag.Bool("exclude-digits", false, "Exclude digits from the password.")
 	flag.BoolVar(exclude_digits, "exd", false, "")
+
+	exe_time := flag.Bool("time", false, "Give the Execution time from the Password(s) back.")
+	flag.BoolVar(exe_time, "t", false, "")
 
 	// Parse command-line arguments
 	flag.Parse()
@@ -373,13 +381,7 @@ func main() {
 			if *exlude_specific != "" {
 
 				allowedCharacters += *exlude_specific
-			} else {
-				fmt.Println(red("Empty or invalid characters"))
-				os.Exit(0)
-
 			}
-
-			fmt.Printf("Password %d\n", i)
 
 			password, err := generatePassword(*length, allowedCharacters, *exlude_specific)
 			if err != nil {
@@ -387,12 +389,10 @@ func main() {
 				os.Exit(1)
 			}
 
-			fmt.Println("Generated password: ", green(password))
-
 			// define passwords here
 			passwords := []string{password}
 
-			if *encrypt_password == true {
+			if *encrypt_password == true && *encrypt_ext_password != "" {
 				// Encrypt the password
 				encryptedPassword, err := encryptPasswords(passwords, key)
 				if err != nil {
@@ -405,6 +405,26 @@ func main() {
 				fmt.Printf("Encrypted Passwords: %s\n", yellow(encryptedPasswordStr))
 
 			}
+
+			if *encrypt_ext_password != "" && *encrypt_password == false {
+				// Encrypt the external password
+				externalPassword := *encrypt_ext_password
+				encryptedPassword, err := encryptPasswords([]string{externalPassword}, key)
+				if err != nil {
+					fmt.Println(red("Error encrypting external password:", err))
+					return
+				}
+
+				// Join the encrypted passwords into a single string
+				encryptedPasswordStr := strings.Join(encryptedPassword, ", ")
+				fmt.Printf("Encrypted External Password: %s\n", yellow(encryptedPasswordStr))
+				fmt.Printf("Symmetric Key: %s\n", yellow(hex.EncodeToString(key)))
+				fmt.Printf(red("Please save your symmetric key in a secure and accessible location. Without the key, decryption is not possible."))
+				os.Exit(0)
+			}
+
+			fmt.Printf("Password %d\n", i)
+			fmt.Println("Generated password: ", green(password))
 
 			generatedPasswords = append(generatedPasswords, password)
 			fmt.Println("-----------------------------------------")
@@ -471,9 +491,6 @@ func main() {
 
 			fmt.Println(blue("All Password(s) saved to " + *output + " file."))
 
-		} else {
-			fmt.Println(red("Path is empty or invalid"))
-			os.Exit(0)
 		}
 
 	} else {
@@ -481,6 +498,7 @@ func main() {
 	}
 
 	if *exe_time {
+
 		// End Timer
 		elapsedTime := time.Since(startTime)
 		fmt.Printf("Execution time: %s\n", elapsedTime)
