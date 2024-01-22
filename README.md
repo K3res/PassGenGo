@@ -15,14 +15,15 @@ Password generator in GO with some extra options. Based on the similiar Python V
 
 
 
-# Differences from passgen.py V1.1.1
+## Differences from passgen.py V1.1.1
 -t to show the execuritv time
 -en to encrypt directly the generate password
 
 
 
-# Usage
+## Usage
 ```
+
 usage: go run passgengo.go [Options]
 
 Password Options:
@@ -47,11 +48,11 @@ Additional Options:
 
 ``` 
 
-# Examples
+## Examples
 
-# Installation
+## Installation
 
-# Disclaimer
+## Disclaimer
 
 
 
