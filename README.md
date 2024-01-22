@@ -7,6 +7,9 @@ Password generator in GO with some extra options. based on the similiar Python V
 # Installation
 
 
+# Usage
+
+
 # Examples
 
 # Disclaimer
