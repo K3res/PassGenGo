@@ -1,16 +1,10 @@
 # PassGenGo
-Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen
+Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen. Check it OUT!
 
- _____               _____             _____       
-|  __ \             / ____|           / ____|
-| |__) |_ _ ___ ___| |  __  ___ _ __ | |  __  ___
-|  ___/ _` / __/ __| | |_ |/ _ \ '_ \| | |_ |/ _ \
-| |  | (_| \__ \__ \ |__| |  __/ | | | |__| | (_) |
-|_|   \__,_|___/___/\_____|\___|_| |_|\_____|\___/
+                          
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/add97f67-24d8-43c7-8809-5726d106ed12)
 
 
-Author: K3res
-Inspired by https://github.com/B0lg0r0v/PassGen                           
   
 
 # Table of Content
@@ -24,11 +18,14 @@ Inspired by https://github.com/B0lg0r0v/PassGen
 
 
 ## Remarks
--t to show the execuritv time
--en to encrypt directly the generate password
--de encrypt-password, key 
-for -o, -ex and -enxp use the ="" format
 
+In this Program is 2 function for the encryption. Here explain: 
+1. `-en` is there to encrypt in the program the new generated password.
+2. `-enxp` is there to encrypt any single password.
+
+For the decrypt options `-de` you musst put first the encrypted Password , then set a comma `,` and then set your Key.
+
+For the 3 Options `-o, -ex` and `-enxp` you musst set the arguments with the `=""` symbol to avoid that your terminal missinterpret some special Characters.  
 
 
 ## Usage
@@ -37,7 +34,7 @@ for -o, -ex and -enxp use the ="" format
 Password Options:
   -h, -help                                                       Show this help message
   -l LENGTH, --length LENGTH                                      Specify the password length. Default is 20.
-  -n NUMBER_PASSWORDS, --number-passwords NUMBER_PASSWORDS        Specify the number of passwords to generate. Default is 1.
+  -n NUMBER-PASSWORDS, --number-passwords NUMBER-PASSWORDS        Specify the number of passwords to generate. Default is 1.
   -c, --clipboard                                                 Copy the generated password to the clipboard
   -en, --encrypt                                                  Encrypt a password or passwords with AES-256 and the same key
   -enxp PASSWORD, --encrypt-ext-pass PASSWORD                     Encrypt a password with AES-256. Only works with one password at a time
@@ -45,7 +42,7 @@ Password Options:
   -o OUTPUT-PATH, --output OUTPUT-PATH                            Save the generated password to a file
 
 Options for Exclusion:
-  -ex, EXCLUDE_SPECIFIC, --exclude-specific EXCLUDE_SPECIFIC      Exclude specific characters from the password
+  -ex, EXCLUDE-SPECIFIC, --exclude-specific EXCLUDE-SPECIFIC      Exclude specific characters from the password
   -exl, --exclude-lower                                           Exclude lowercase letters from the password
   -exs, --exclude-special                                         Exclude special characters from the password.
   -exu, --exclude-upper                                           Exclude uppercase letters from the password.
@@ -95,7 +92,7 @@ Instal missing GO packages:
 
 
 ## Disclaimer
-(Dieses Tool war nur ein klieines project für mich um mit der programiersprache GO zu üben. Es ist nicht dafür gedacht die sicherste und schnellste programm zu sein.  )
+This tool was just a small project for me to practice with the programming language GO. It is not intended to be the most secure and fastest program.
 
 
 
