@@ -1,20 +1,17 @@
 # PassGenGo
 Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen
-<div align=center>
-                           
-                                                            _____               _____             _____       
-                                                           |  __ \             / ____|           / ____|
-                                                           | |__) |_ _ ___ ___| |  __  ___ _ __ | |  __  ___
-                                                           |  ___/ _` / __/ __| | |_ |/ _ \ '_ \| | |_ |/ _ \
-                                                           | |  | (_| \__ \__ \ |__| |  __/ | | | |__| | (_) |
-                                                           |_|   \__,_|___/___/\_____|\___|_| |_|\_____|\___/
-                                                           
-                                                           
-                                                           Author: K3res
-                                                           Inspired by https://github.com/B0lg0r0v/PassGen
+
+ _____               _____             _____       
+|  __ \             / ____|           / ____|
+| |__) |_ _ ___ ___| |  __  ___ _ __ | |  __  ___
+|  ___/ _` / __/ __| | |_ |/ _ \ '_ \| | |_ |/ _ \
+| |  | (_| \__ \__ \ |__| |  __/ | | | |__| | (_) |
+|_|   \__,_|___/___/\_____|\___|_| |_|\_____|\___/
 
 
-</div>
+Author: K3res
+Inspired by https://github.com/B0lg0r0v/PassGen                           
+  
 
 # Table of Content
 - [PassGenGo](#passgengo)
