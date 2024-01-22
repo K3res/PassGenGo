@@ -392,20 +392,6 @@ func main() {
 			// define passwords here
 			passwords := []string{password}
 
-			if *encrypt_password == true && *encrypt_ext_password != "" {
-				// Encrypt the password
-				encryptedPassword, err := encryptPasswords(passwords, key)
-				if err != nil {
-					fmt.Println(red("Error encrypting password:", err))
-					return
-				}
-
-				// Join the encrypted passwords into a single string
-				encryptedPasswordStr := strings.Join(encryptedPassword, ", ")
-				fmt.Printf("Encrypted Passwords: %s\n", yellow(encryptedPasswordStr))
-
-			}
-
 			if *encrypt_ext_password != "" && *encrypt_password == false {
 				// Encrypt the external password
 				externalPassword := *encrypt_ext_password
@@ -425,6 +411,20 @@ func main() {
 
 			fmt.Printf("Password %d\n", i)
 			fmt.Println("Generated password: ", green(password))
+
+			if *encrypt_password == true && *encrypt_ext_password == "" {
+				// Encrypt the password
+				encryptedPassword, err := encryptPasswords(passwords, key)
+				if err != nil {
+					fmt.Println(red("Error encrypting password:", err))
+					return
+				}
+
+				// Join the encrypted passwords into a single string
+				encryptedPasswordStr := strings.Join(encryptedPassword, ", ")
+				fmt.Printf("Encrypted Passwords: %s\n", yellow(encryptedPasswordStr))
+
+			}
 
 			generatedPasswords = append(generatedPasswords, password)
 			fmt.Println("-----------------------------------------")
