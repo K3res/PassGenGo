@@ -21,10 +21,10 @@ Password generator in GO with some extra options. Based on the Python Version ht
 
 In this program, there are two functions for encryption.  
   1. `-en` is used to encrypt the newly generated password(s) within the program.
-  2. `-enxp` is used to encrypt any single input password.
+  2. `-enxp` is used to encrypt any single input password.<br/>
 
-For the decryption option -de, you must first input the encrypted password, then set a comma ,, and finally input your key.
-Concerning the three options -o, -ex, and -enxp, you must set the arguments with the ="" symbol to avoid your terminal misinterpreting some special characters.  
+For the decryption option -de, you must first input the encrypted password, then set a comma ,, and finally input your key.<br/>
+Concerning the three options -o, -ex, and -enxp, you must set the arguments with the ="" symbol to avoid your terminal misinterpreting some special characters. <br/> 
 
 
 ## Usage
