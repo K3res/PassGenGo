@@ -76,7 +76,7 @@ Additional Options:
 
 ## Installation
 
-Install GO with a script: <br/>
+Install GO with the script: <br/>
 
 1. Download `go_linux_install.sh` into a new directory. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
