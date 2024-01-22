@@ -63,15 +63,16 @@ Additional Options:
 
 ## Installation
 
-Linux
-Install GO:
-download go_linux_install.sh in a new dictonary
-make it executable chmod +x go_linux_install.sh 
-run the bash ./go_linux_install.sh
+Linux <br/>
+Install GO: <br/>
 
-Windows
+download go_linux_install.sh in a new dictonary <br/>
+make it executable chmod +x go_linux_install.sh <br/>
+run the bash ./go_linux_install.sh<br/>
 
-Mac OS
+Windows <br/>
+
+Mac OS <br/>
 
 
 ## Disclaimer
