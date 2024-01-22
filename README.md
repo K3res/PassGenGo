@@ -1,13 +1,13 @@
 # PassGenGo
 Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen
-
+<div align=center>
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/34a00bab-3dab-45b7-9c4c-aee04019dd77)
 
-
+</div>
 
 # Table of Content
 - [PassGenGo](#passgengo)
-  * [Differences from passgen.py V1.1.1](#note)
+  * [Remarks](#note)
   * [Usage](#usage)
   * [Examples](#examples)
   * [Installation](#installation)
@@ -15,7 +15,7 @@ Password generator in GO with some extra options. Based on the Python Version ht
 
 
 
-## Differences from passgen.py V1.1.1
+## Remarks
 -t to show the execuritv time
 -en to encrypt directly the generate password
 -de encrypt-password, key 
@@ -49,6 +49,25 @@ Additional Options:
 ``` 
 
 ## Examples
+*Command:* ` go run .\passgengo.go -en -l 30 -n 2 -t -exs -exd`
+
+<div align=center>
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/bf987ec3-895d-4eaf-8b7c-faf53c764d80)
+
+</div>
+
+<div align=center>
+
+</div>
+
+<div align=center>
+
+</div>
+
+<div align=center>
+
+</div>
+
 -en 
 
 -enxp
@@ -63,16 +82,15 @@ Additional Options:
 
 ## Installation
 
-Linux <br/>
+
 Install GO with Script: <br/>
 
-download go_linux_install.sh in a new dictonary <br/>
-make it executable chmod +x go_linux_install.sh <br/>
-run the bash ./go_linux_install.sh<br/>
+1. download go_linux_install.sh in a new dictonary <br/>
+2. make it executable chmod +x go_linux_install.sh <br/>
+3. run the bash ./go_linux_install.sh<br/>
 
-download the complet passgengo folder and go in<br/>
-to download the package jsut run the file <br/>
-go run passgengo.go  <br/>
+download the complet passgengo folder<br/>
+to download the package jsut run the file:  go run .\passgengo.go  <br/>
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
