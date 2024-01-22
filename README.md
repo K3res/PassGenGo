@@ -1,5 +1,5 @@
 # PassGenGo
-Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen. Check it OUT!
+Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen. <------------------------Check it out!
 
                           
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/add97f67-24d8-43c7-8809-5726d106ed12)
