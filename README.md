@@ -19,13 +19,11 @@ Password generator in GO with some extra options. Based on the Python Version ht
 
 ## Remarks
 
-In this Program is 2 function for the encryption. Here explain: 
-1. `-en` is there to encrypt in the program the new generated password.
-2. `-enxp` is there to encrypt any single password.
-
-For the decrypt options `-de` you musst put first the encrypted Password , then set a comma `,` and then set your Key.
-
-For the 3 Options `-o, -ex` and `-enxp` you musst set the arguments with the `=""` symbol to avoid that your terminal missinterpret some special Characters.  
+In this program, there are two functions for encryption.  
+  1. `-en` is used to encrypt the newly generated password(s) within the program.
+  2. `-enxp` is used to encrypt any single input password.
+For the decryption option -de, you must first input the encrypted password, then set a comma ,, and finally input your key.
+Concerning the three options -o, -ex, and -enxp, you must set the arguments with the ="" symbol to avoid your terminal misinterpreting some special characters.  
 
 
 ## Usage
@@ -76,15 +74,15 @@ Additional Options:
 
 ## Installation
 
-Install GO with Script: <br/>
+Install GO with a script: <br/>
 
-1. Download `go_linux_install.sh` in a new dictonary. <br/>
+1. Download `go_linux_install.sh` into a new directory. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
-3. Run the bash: `./go_linux_install.sh`.<br/>
+3. Run the bash script: `./go_linux_install.sh`.<br/>
 
-Instal missing GO packages:
-1. Download the complet passgengo folder in a dictonary.<br/>
-2. To install the packages run the GO file:  `go run .\passgengo.go`  <br/>
+Install missing GO packages:
+1. Download the complete `passgengo` folder in a dictonary.<br/>
+2. To install the packages, run the GO file:  `go run .\passgengo.go`  <br/>
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
