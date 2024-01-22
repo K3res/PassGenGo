@@ -64,11 +64,20 @@ Additional Options:
 ## Installation
 
 Linux <br/>
-Install GO: <br/>
+Install GO with Script: <br/>
 
 download go_linux_install.sh in a new dictonary <br/>
 make it executable chmod +x go_linux_install.sh <br/>
 run the bash ./go_linux_install.sh<br/>
+
+download the complet passgengo folder and go in<br/>
+to download the package jsut run the file <br/>
+go run passgengo.go  <br/>
+
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
+
+
+
 
 Windows <br/>
 
