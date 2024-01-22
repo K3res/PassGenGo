@@ -169,7 +169,7 @@ func customUsage() {
 	fmt.Fprintln(w, "Password Options:")
 	fmt.Fprintln(w, "  -h, -help\t\t\tShow this help message")
 	fmt.Fprintln(w, "  -l LENGTH, --length LENGTH\t\t\tSpecify the password length. Default is 20.")
-	fmt.Fprintln(w, "  -n NUMBER_PASSWORDS, --number-passwords NUMBER_PASSWORDS\t\t\tSpecify the number of passwords to generate. Default is 1.")
+	fmt.Fprintln(w, "  -n NUMBER-PASSWORDS, --number-passwords NUMBER-PASSWORDS\t\t\tSpecify the number of passwords to generate. Default is 1.")
 	fmt.Fprintln(w, "  -c, --clipboard\t\t\tCopy the generated password to the clipboard")
 	fmt.Fprintln(w, "  -en, --encrypt\t\t\tEncrypt a password or passwords with AES-256 and the same key")
 	fmt.Fprintln(w, "  -enxp PASSWORD, --encrypt-ext-pass PASSWORD\t\t\tEncrypt a password with AES-256. Only works with one password at a time")
@@ -180,7 +180,7 @@ func customUsage() {
 	fmt.Fprintln(w, "")
 
 	fmt.Fprintln(w, "Options for Exclusion:")
-	fmt.Fprintln(w, "  -ex, EXCLUDE_SPECIFIC, --exclude-specific EXCLUDE_SPECIFIC\t\t\tExclude specific characters from the password")
+	fmt.Fprintln(w, "  -ex, EXCLUDE-SPECIFIC, --exclude-specific EXCLUDE-SPECIFIC\t\t\tExclude specific characters from the password")
 	fmt.Fprintln(w, "  -exl, --exclude-lower\t\t\tExclude lowercase letters from the password")
 	fmt.Fprintln(w, "  -exs, --exclude-special\t\t\tExclude special characters from the password.")
 	fmt.Fprintln(w, "  -exu, --exclude-upper\t\t\tExclude uppercase letters from the password.")
