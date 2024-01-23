@@ -54,21 +54,21 @@ Additional Options:
 ``` 
 
 ## Examples
-*Command:* ` go run .\passgengo.go -en -l 30 -n 2 -t -exs -exd`
+*Command:* ` go run ./passgengo.go -en -l 30 -n 2 -t -exs -exd`
 
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/bf987ec3-895d-4eaf-8b7c-faf53c764d80)
 
 
-*Command:* ` go run .\passgengo.go -enxp="$~ln-)+~kQ+6V}7g9md~"`
+*Command:* ` go run ./passgengo.go -enxp="$~ln-)+~kQ+6V}7g9md~"`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/bf696cb2-3a2e-4500-a18c-5917d97befc6)
 
-*Command:* ` go run .\passgengo.go -de 470f55af3a31e4da6677fc8bede6afdcce96282841370e8a419b075ce7eec3cee866c17b1215f908be91a33a890921707e8ba4da80d7da7f8286f9725e92e40e,28f5f0e701f0f70e406582549c893759efc39f5e6237b1f8840f75e96cf438fe`
+*Command:* ` go run ./passgengo.go -de 470f55af3a31e4da6677fc8bede6afdcce96282841370e8a419b075ce7eec3cee866c17b1215f908be91a33a890921707e8ba4da80d7da7f8286f9725e92e40e,28f5f0e701f0f70e406582549c893759efc39f5e6237b1f8840f75e96cf438fe`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/117db0ed-4756-43a4-9b55-d8c1ae185043)
 
-*Command:* ` go run .\passgengo.go -ex="euT58lkfDfg!#m." -o="Password.txt" -n 5`
+*Command:* ` go run ./passgengo.go -ex="euT58lkfDfg!#m." -o="Password.txt" -n 5`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/5248da45-9efa-4197-b2ec-bc9feb82c213)
 
@@ -84,7 +84,7 @@ Install GO with the script: <br/>
 
 Install missing GO packages:
 1. Download the complete `passgengo` folder in a dictonary.<br/>
-2. To install the packages, run the GO file:  `go run .\passgengo.go`  <br/>
+2. To install the packages, run the GO file:  `go run ./passgengo.go`  <br/>
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
