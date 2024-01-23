@@ -1,5 +1,6 @@
 # PassGenGo
-Password generator in GO with some extra options. Based on the Python Version https://github.com/B0lg0r0v/PassGen. Check it OUT!
+Password generator in GO with some extra options.</br>
+Based on the Python Version https://github.com/B0lg0r0v/PassGen. <-----------Check it out!
 
                           
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/add97f67-24d8-43c7-8809-5726d106ed12)
@@ -19,13 +20,12 @@ Password generator in GO with some extra options. Based on the Python Version ht
 
 ## Remarks
 
-In this Program is 2 function for the encryption. Here explain: 
-1. `-en` is there to encrypt in the program the new generated password.
-2. `-enxp` is there to encrypt any single password.
+In this program, there are two functions for encryption.  
+  1. `-en` is used to encrypt the newly generated password(s) within the program.
+  2. `-enxp` is used to encrypt any single input password.<br/>
 
-For the decrypt options `-de` you musst put first the encrypted Password , then set a comma `,` and then set your Key.
-
-For the 3 Options `-o, -ex` and `-enxp` you musst set the arguments with the `=""` symbol to avoid that your terminal missinterpret some special Characters.  
+For the decryption option `-de`, you must first input the encrypted password, then set a comma `,` and finally input your key.<br/>
+Concerning the three options `-o`, `-ex`, and `-enxp`, you must set the arguments with the `=""` symbol to avoid your terminal misinterpreting some special characters. <br/> 
 
 
 ## Usage
@@ -54,21 +54,21 @@ Additional Options:
 ``` 
 
 ## Examples
-*Command:* ` go run .\passgengo.go -en -l 30 -n 2 -t -exs -exd`
+*Command:* ` go run ./passgengo.go -en -l 30 -n 2 -t -exs -exd`
 
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/bf987ec3-895d-4eaf-8b7c-faf53c764d80)
 
 
-*Command:* ` go run .\passgengo.go -enxp="$~ln-)+~kQ+6V}7g9md~"`
+*Command:* ` go run ./passgengo.go -enxp="$~ln-)+~kQ+6V}7g9md~"`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/bf696cb2-3a2e-4500-a18c-5917d97befc6)
 
-*Command:* ` go run .\passgengo.go -de 470f55af3a31e4da6677fc8bede6afdcce96282841370e8a419b075ce7eec3cee866c17b1215f908be91a33a890921707e8ba4da80d7da7f8286f9725e92e40e,28f5f0e701f0f70e406582549c893759efc39f5e6237b1f8840f75e96cf438fe`
+*Command:* ` go run ./passgengo.go -de 470f55af3a31e4da6677fc8bede6afdcce96282841370e8a419b075ce7eec3cee866c17b1215f908be91a33a890921707e8ba4da80d7da7f8286f9725e92e40e,28f5f0e701f0f70e406582549c893759efc39f5e6237b1f8840f75e96cf438fe`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/117db0ed-4756-43a4-9b55-d8c1ae185043)
 
-*Command:* ` go run .\passgengo.go -ex="euT58lkfDfg!#m." -o="Password.txt" -n 5`
+*Command:* ` go run ./passgengo.go -ex="euT58lkfDfg!#m." -o="Password.txt" -n 5`
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/5248da45-9efa-4197-b2ec-bc9feb82c213)
 
@@ -76,15 +76,20 @@ Additional Options:
 
 ## Installation
 
-Install GO with Script: <br/>
+Preparation for PassGenGo
+1. Download the reposoritory from GitHub: `git clone https://github.com/B0lg0r0v/PassGenGo.git`
+2. Go into the new Folder with: `cd PassGenGo`
 
-1. Download `go_linux_install.sh` in a new dictonary. <br/>
+
+Install GO with the script: <br/>
+1. Go to the `LinGO` Folder. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
-3. Run the bash: `./go_linux_install.sh`.<br/>
+3. Run the bash script: `./go_linux_install.sh`.<br/>
 
-Instal missing GO packages:
-1. Download the complet passgengo folder in a dictonary.<br/>
-2. To install the packages run the GO file:  `go run .\passgengo.go`  <br/>
+
+Install missing GO packages:
+1. To install the packages, run the GO file:  `go run ./passgengo.go`<br/>
+
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
