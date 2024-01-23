@@ -80,13 +80,16 @@ Preparation for PassGenGo
 1. Download the reposoritory from GitHub: `git clone https://github.com/B0lg0r0v/PassGenGo.git`
 2. Go into the new Folder with: `cd PassGenGo`
 
+
 Install GO with the script: <br/>
 1. Go to the `LinOG` Folder. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
 3. Run the bash script: `./go_linux_install.sh`.<br/>
 
+
 Install missing GO packages:
 1. To install the packages, run the GO file:  `go run ./passgengo.go`<br/>
+
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
