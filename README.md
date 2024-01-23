@@ -82,7 +82,7 @@ Preparation for PassGenGo
 
 
 Install GO with the script: <br/>
-1. Go to the `LinOG` Folder. <br/>
+1. Go to the `LinGO` Folder. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
 3. Run the bash script: `./go_linux_install.sh`.<br/>
 
