@@ -78,13 +78,12 @@ Additional Options:
 
 Install GO with the script: <br/>
 
-1. Download `go_linux_install.sh` into a new directory. <br/>
+1. Go to the `LinOG` Folder. <br/>
 2. Make it executable: `chmod +x go_linux_install.sh`.<br/>
 3. Run the bash script: `./go_linux_install.sh`.<br/>
 
 Install missing GO packages:
-1. Download the complete `passgengo` folder in a dictonary.<br/>
-2. To install the packages, run the GO file:  `go run ./passgengo.go`  <br/>
+1. To install the packages, run the GO file:  `go run ./passgengo.go`<br/>
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
 
