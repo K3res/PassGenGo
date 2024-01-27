@@ -97,7 +97,8 @@ Execute in Linux:
 Execute in Windows
 1. Run the GO file for windows:  `./passgengo_windows.exe`<br/>
 
-![grafik](https://github.com/K3res/PassGenGo/assets/89378576/ccf6ad08-96ae-4a93-abf6-eb43f9b03656)
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/ee894e3d-d4d7-417a-a8fd-4e71d8e429bf)
+
 
 
 
