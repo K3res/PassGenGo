@@ -78,7 +78,6 @@ Additional Options:
 
 Preparation for PassGenGo
 1. Download the reposoritory from GitHub: `git clone https://github.com/K3res/PassGenGo.git`
-2. Go into the new Folder with: `cd PassGenGo`
 
 
 Install GO with the script: <br/>
@@ -87,8 +86,17 @@ Install GO with the script: <br/>
 3. Run the bash script: `./go_linux_install.sh`.<br/>
 
 
-Install missing GO packages:
-1. To install the packages, run the GO file.EXE:  `./passgengo.exe`<br/>
+Execute in Linux:
+1. Run the GO file for Linux:  `./passgengo_linux.exe`<br/>
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/0b868319-abcc-457b-89db-f983d6537303)
+
+
+
+
+Execute in Windows
+1. Run the GO file for windows:  `./passgengo_windows.exe`<br/>
+![grafik](https://github.com/K3res/PassGenGo/assets/89378576/ccf6ad08-96ae-4a93-abf6-eb43f9b03656)
+
 
 
 <br/>
