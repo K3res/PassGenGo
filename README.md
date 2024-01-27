@@ -88,7 +88,7 @@ Install GO with the script: <br/>
 
 
 Install missing GO packages:
-1. To install the packages, run the GO file:  `go run ./passgengo.go`<br/>
+1. To install the packages, run the GO file.EXE:  `./passgengo.exe`<br/>
 
 
 ![grafik](https://github.com/K3res/PassGenGo/assets/89378576/449476e0-b999-46e0-b090-cdde800d89a5) <br/>
