@@ -77,7 +77,7 @@ Additional Options:
 ## Installation
 
 Preparation for PassGenGo
-1. Download the reposoritory from GitHub: `git clone https://github.com/B0lg0r0v/PassGenGo.git`
+1. Download the reposoritory from GitHub: `git clone https://github.com/K3res/PassGenGo.git`
 2. Go into the new Folder with: `cd PassGenGo`
 
 
